@@ -91,6 +91,7 @@ import {
   of,
   performanceMarkFeature,
   platformCore,
+  resolveComponentResources,
   runInInjectionContext,
   setClassMetadata,
   setDocument,
@@ -114,7 +115,7 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-KHV4EVH4.js";
+} from "./chunk-SYHEP3OL.js";
 import {
   __async,
   __objRest,
@@ -3753,7 +3754,7 @@ var PlatformNavigation = class _PlatformNavigation {
 
 // node_modules/@angular/common/fesm2022/common.mjs
 var PLATFORM_BROWSER_ID = "browser";
-var VERSION = new Version("20.1.2");
+var VERSION = new Version("20.1.3");
 var ViewportScroller = class _ViewportScroller {
   // De-sugared tree-shakable injection
   // See #23917
@@ -6086,9 +6087,16 @@ var KeyEventsPlugin = class _KeyEventsPlugin extends EventManagerPlugin {
   }], null);
 })();
 function bootstrapApplication(rootComponent, options) {
-  return internalCreateApplication(__spreadValues({
+  const config = __spreadValues({
     rootComponent
-  }, createProvidersConfig(options)));
+  }, createProvidersConfig(options));
+  if ((typeof ngJitMode === "undefined" || ngJitMode) && typeof fetch === "function") {
+    return resolveComponentResources(fetch).catch((error) => {
+      console.error(error);
+      return Promise.resolve();
+    }).then(() => internalCreateApplication(config));
+  }
+  return internalCreateApplication(config);
 }
 function createApplication(options) {
   return internalCreateApplication(createProvidersConfig(options));
@@ -9504,7 +9512,7 @@ function provideClientHydration(...features) {
   }
   return makeEnvironmentProviders([typeof ngDevMode !== "undefined" && ngDevMode ? provideZoneJsCompatibilityDetector() : [], withDomHydration(), featuresKind.has(HydrationFeatureKind.NoHttpTransferCache) || hasHttpTransferCacheOptions ? [] : withHttpTransferCache({}), providers]);
 }
-var VERSION2 = new Version("20.1.2");
+var VERSION2 = new Version("20.1.3");
 
 export {
   getDOM,
@@ -9563,9 +9571,9 @@ export {
 @angular/common/fesm2022/http.mjs:
 @angular/platform-browser/fesm2022/platform-browser.mjs:
   (**
-   * @license Angular v20.1.2
+   * @license Angular v20.1.3
    * (c) 2010-2025 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-V36IXVUA.js.map
+//# sourceMappingURL=chunk-XCOPYIMB.js.map
