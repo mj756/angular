@@ -224,6 +224,7 @@ import {
   getOutputDestroyRef,
   getPlatform,
   getSanitizationBypassType,
+  getTransferState,
   importProvidersFrom,
   inject,
   injectChangeDetectorRef,
@@ -484,7 +485,7 @@ import {
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
   ɵɵviewQuerySignal
-} from "./chunk-KHV4EVH4.js";
+} from "./chunk-R6HBJOM5.js";
 import "./chunk-WDMUDEB6.js";
 export {
   ANIMATION_MODULE_TYPE,
@@ -748,6 +749,7 @@ export {
   getLocalePluralCase as ɵgetLocalePluralCase,
   getOutputDestroyRef as ɵgetOutputDestroyRef,
   getSanitizationBypassType as ɵgetSanitizationBypassType,
+  getTransferState as ɵgetTransferState,
   ɵgetUnknownElementStrictMode,
   ɵgetUnknownPropertyStrictMode,
   _global as ɵglobal,

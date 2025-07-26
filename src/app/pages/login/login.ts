@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -7,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './login.scss'
 })
 export class Login {
-
+  loginForm: FormGroup=new FormGroup({
+    email: new FormControl(),
+    password:new FormControl()
+  });
 }
