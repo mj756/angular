@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { map, catchError } from "rxjs";
+import { map, catchError, of } from "rxjs";
 import { Observable } from "rxjs/internal/Observable";
 import { LoaderService } from "./custom_loader";
 import { ToastService } from "./toast";
@@ -44,17 +44,18 @@ export class ApiService {
     return this.http.post<any>(endpoint, { params }).pipe(
       map((response) => {
          if (showLoader) this.loader.hide();
-         this.snackBar.success("Success");
-        if (response && response.status == 20) {
-          return response.data as T;
-        } else {
-          return {} as T;
-        }
+         if (response && response.status == 20) {
+           this.snackBar.success("Success");
+           return response.data as T;
+         } else {
+           this.snackBar.error(response?.message || "Failed to post data");
+           return {} as T;
+         }
       }),
-      catchError((err, caught) => {
+      catchError((err) => {
          if (showLoader) this.loader.hide();
-         this.snackBar.error(err.toString);
-        return {} as unknown as Observable<T>;
+         this.snackBar.error(err?.message || "Unknown error occurred");
+         return of({} as T);
       })
     );
   }
