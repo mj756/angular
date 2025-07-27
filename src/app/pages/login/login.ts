@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/services/api';
 
 
 @Component({
@@ -9,8 +10,12 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrl: './login.scss'
 })
 export class Login {
+  apiService = inject(ApiService);
   loginForm: FormGroup=new FormGroup({
     email: new FormControl(),
     password:new FormControl()
   });
+  login(){
+    
+  }
 }
