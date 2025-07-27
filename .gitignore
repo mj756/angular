@@ -1,3 +1,56 @@
 /node_modules/
 package-lock.json
 dist/
+
+
+
+# Angular build outputs
+/dist/
+/out-tsc/
+/.angular/
+
+
+# IDEs and editors
+/.idea/
+/.vscode/
+/*.sublime-project
+/*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Compiled output
+*.js
+*.js.map
+
+# Build artifacts
+*.tgz
+
+# Temporary files
+/tmp
+/temp
+*.tmp
+
+# Tests
+/coverage/
+karma-*.json
+test-results/
+
+# Optional: Ignore local configuration overrides
+/.env
+/.env.local
+.env*
+
+# Optional: Git hooks or tools
+/.husky/
+/.prettierignore
+.prettierrc
+.eslintrc.json
+.editorconfig
